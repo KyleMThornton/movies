@@ -6,7 +6,7 @@ export default async function Movies() {
 
     return (
         <div className="bg-white">
-            <div className="container pt-10 flex overflow-auto w-full">
+            <div className="container pt-10 flex overflow-auto w-full no-scrollbar">
                 {movieData.results.map((movie: any) => (
                     <MovieCard
                         key={movie.id}
