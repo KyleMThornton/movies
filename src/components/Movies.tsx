@@ -6,7 +6,7 @@ export default async function Movies() {
 
     return (
         <div className="bg-white">
-            <div className="container pt-10 flex items-center">
+            <div className="container pt-10 flex overflow-auto w-full">
                 {movieData.results.map((movie: any) => (
                     <MovieCard
                         key={movie.id}
@@ -17,6 +17,13 @@ export default async function Movies() {
                     />
                 )
                 )}
+                {/* <MovieCard
+                    key={movieData.results[2].id}
+                    poster={movieData.results[2].poster_path}
+                    title={movieData.results[2].title}
+                    releaseDate={movieData.results[2].release_date}
+                    voteAverage={movieData.results[2].vote_average}
+                /> */}
             </div>
         </div>
     )
