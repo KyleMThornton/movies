@@ -1,4 +1,4 @@
-## Untitled mvoie site
+## Untitled Movie Site
 
 Uses the TMDB api.
 
