@@ -15,9 +15,14 @@ export const MovieCard: React.FC<MovieCardProps> = ({ poster, title, releaseDate
             </div>
             <div className="flex flex-col">
                 <h3 className="pt-5 font-bold text-md">{title}</h3>
-                <div className="flex flex-col">
-                    <p>{releaseDate.slice(5,7)}/{releaseDate.slice(8,10)}/{releaseDate.slice(0,4)}</p>
-                    <p>{voteAverage}/10</p>
+                <div className="flex items-center justify-between">
+                    <div className="flex flex-col">
+                        <p>{releaseDate.slice(5,7)}/{releaseDate.slice(8,10)}/{releaseDate.slice(0,4)}</p>
+                        <p>{voteAverage}/10</p>
+                    </div>
+                    <div className="justify-items-end">
+                        <Rating review={voteAverage} />
+                    </div>
                 </div>
             </div>
         </div>
