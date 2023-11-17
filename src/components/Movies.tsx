@@ -5,7 +5,7 @@ export default async function Movies() {
     const movieData = await response.json()
 
     return (
-        <div className="container pt-5">
+        <div className="container pt-5 text-black dark:text-white">
             <h2 className="text-4xl font-bold p-2">Movies</h2>
             <div className="flex overflow-auto w-full no-scrollbar">
                 {movieData.results.map((movie: any) => (
