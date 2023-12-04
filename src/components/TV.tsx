@@ -10,6 +10,7 @@ export default async function TV() {
             <div className="flex overflow-auto w-full no-scrollbar">
                 {tvData.results.map((tv: any) => (
                     <MovieCard
+                        id={tv.id}
                         key={tv.id}
                         poster={tv.poster_path}
                         title={tv.name}
