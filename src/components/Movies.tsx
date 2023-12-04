@@ -11,6 +11,7 @@ export default async function Movies() {
                 {movieData.results.map((movie: any) => (
                     <MovieCard
                         key={movie.id}
+                        id={movie.id}
                         poster={movie.poster_path}
                         title={movie.title}
                         releaseDate={movie.release_date}
