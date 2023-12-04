@@ -8,7 +8,8 @@ export default async function Hero() {
             </div>
             <div className="container relative flex flex-col justify-center items-center text-center h-full p-5">
                 <h1 className="text-6xl font-bold text-white">Welcome to the Movie Database!</h1>
-                <h2 className="text-xl text-white">Get info on your favorite movies, tv shows, and actors!</h2>
+                <a href="https://developer.themoviedb.org/reference/intro/getting-started"><h2 className="text-2xl font-extralight text-white">powered by TMDB</h2></a>
+                <h2 className="text-xl text-white pt-5">Get info on your favorite movies, tv shows, and actors!</h2>
             </div>
         </div>
     ) 
