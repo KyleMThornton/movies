@@ -3,8 +3,8 @@ export default async function Hero() {
     const movieData = await response.json()
 
     return (
-        <div className="relative bg-slate-950 h-96">
-            <div className="absolute inset-0 bg-cover bg-center h-96 opacity-50" style={{backgroundImage: `url(https://image.tmdb.org/t/p/original${movieData.results[0].backdrop_path})`}}>
+        <div className="relative bg-slate-950 h-128">
+            <div className="absolute inset-0 bg-cover bg-center h-128 opacity-50" style={{backgroundImage: `url(https://image.tmdb.org/t/p/original${movieData.results[0].backdrop_path})`}}>
             </div>
             <div className="container relative flex flex-col justify-center items-center text-center h-full p-5">
                 <h1 className="text-6xl font-bold text-white">Welcome to the Movie Database!</h1>
