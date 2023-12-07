@@ -1,5 +1,5 @@
 export default function Rating({ review }: { review: number }) {
-    const ratingPercentage = review * 10
+    const ratingPercentage = Math.floor(review * 10)
     let ratingColor = ""
 
     if(ratingPercentage >= 75) {
