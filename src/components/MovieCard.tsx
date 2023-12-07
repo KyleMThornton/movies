@@ -10,10 +10,11 @@ type MovieCardProps = {
 };
 
 export const MovieCard: React.FC<MovieCardProps> = ({ poster, title, releaseDate, voteAverage, id }) => {
+    const moviePoster = poster ? `https://image.tmdb.org/t/p/original/${poster}` : "/images/noposter.jpg"
     return (
         <div className="flex flex-col m-2 w-96 h-96">
             <div className="h-60 w-48 hover:scale-105 transition-all duration-200 ease-in-out cursor-pointer">
-                <Link href={`/movie/${id}`}><img src={`https://image.tmdb.org/t/p/original/${poster}`} alt={title} className="w-full h-full object-cover rounded-lg" /></Link>
+                <Link href={`/movie/${id}`}><img src={moviePoster} alt={title} className="w-full h-full object-cover rounded-lg" /></Link>
             </div>
             <div className="flex items-center justify-between pt-5">
                 <div>
