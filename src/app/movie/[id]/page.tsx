@@ -1,3 +1,5 @@
+import Actors from "@/components/Actors";
+
 async function getMovieData(movieId: number) {
     const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.TMDB_API_KEY}`)
     const movieData = await response.json()
@@ -8,6 +10,7 @@ export default async function Movie({params } : { params: {id: number}}) {
     const movieData = await getMovieData(params.id) 
 
     return (
+      <div>
       <div className="relative bg-slate-950 h-128">
         <div
           className="absolute inset-0 bg-cover bg-center h-128 opacity-20"
@@ -41,10 +44,13 @@ export default async function Movie({params } : { params: {id: number}}) {
                 <h4 className="text-white text-2xl font-bold">Overview</h4>
                 <p className="text-white text-lg">{movieData.overview}</p>
               </div>
-              <div></div>
             </div>
           </div>
         </div>
+      </div>
+      <div className="container">
+        <Actors movieId={params.id} />
+      </div>
       </div>
     );
 }
