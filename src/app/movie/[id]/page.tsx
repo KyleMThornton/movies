@@ -1,5 +1,6 @@
 import Actors from "@/components/Actors";
 import Rating from "@/components/Rating";
+import Recommendations from "@/components/Recommendations";
 import { Dirent } from "fs";
 import { FaPlay } from "react-icons/fa";
 
@@ -32,11 +33,21 @@ async function getMovieTrailer(movieId: number) {
 export default async function Movie({params } : { params: {id: number}}) {
     const movieData = await getMovieData(params.id)
     const movieRatingData = await getMovieRating(params.id)
-    const movieRating = movieRatingData.results.find((rating: any) => rating.iso_3166_1 === "US").release_dates[0].certification
-    const movieCredits = await getMovieCredits(params.id)
+    let movieRating = '';
+    if (movieRatingData && movieRatingData.results) {
+        const usRating = movieRatingData.results.find((rating: any) => rating.iso_3166_1 === "US");
+        if (usRating && usRating.release_dates && usRating.release_dates[0]) {
+            movieRating = usRating.release_dates[0].certification;
+        }
+    }    const movieCredits = await getMovieCredits(params.id)
     const director = movieCredits.crew.find((crewMember: any) => crewMember.job === "Director").name
     const screenwriters = movieCredits.crew.filter((crewMember: any) => crewMember.job === "Screenplay").map((crewMember: any) => crewMember.name)
-    const trailer = await getMovieTrailer(params.id)
+    let trailer;
+    try {
+        trailer = await getMovieTrailer(params.id);
+    } catch (error) {
+        console.error('Failed to fetch movie trailer:', error);
+    }
 
     return (
       <div>
@@ -74,14 +85,14 @@ export default async function Movie({params } : { params: {id: number}}) {
                   </h3>
                   <div className="flex pt-4 items-center">
                     <div className="text-xl">
-                      <Rating review={movieData.vote_average} />
+                      {movieData.vote_average !== 0 ? <Rating review={movieData.vote_average} /> : null}
                     </div>
-                    <a href={trailer} target="_blank"><div className="pl-5 flex items-center">
+                    {trailer ? <a href={trailer} target="_blank"><div className="pl-5 flex items-center">
                       <div>
                         <FaPlay />
                       </div>
                       <h3 className="text-xl pl-2">Play Trailer</h3>
-                    </div></a>
+                    </div></a> : null}
                   </div>
                 </div>
               </div>
@@ -90,21 +101,22 @@ export default async function Movie({params } : { params: {id: number}}) {
                 <p className="text-lg">{movieData.overview}</p>
               </div>
               <div className="flex justify-between w-1/2">
-                <div>
+                {director ? <div>
                   <h5 className="pt-5 font-bold">Director</h5>
                   <p>{director}</p>
-                </div>
-                <div>
+                </div> : null }
+                {screenwriters ? <div>
                   <h5 className="pt-5 font-bold">Screenplay</h5>
                   <p>{screenwriters.join(", ")}</p>
-                </div>
+                </div> : null}
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="container">
+      <div className="container pb-5">
         <Actors movieId={params.id} />
+        <Recommendations movieId={params.id} />
       </div>
       </div>
     );
