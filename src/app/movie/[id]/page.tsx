@@ -6,8 +6,16 @@ async function getMovieData(movieId: number) {
     return movieData
 }
 
+async function getMovieRating(movieId: number) {
+  const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/release_dates?api_key=${process.env.TMDB_API_KEY}`)
+  const movieRatingData = await response.json()
+  return movieRatingData
+}
+
 export default async function Movie({params } : { params: {id: number}}) {
-    const movieData = await getMovieData(params.id) 
+    const movieData = await getMovieData(params.id)
+    const movieRatingData = await getMovieRating(params.id)
+    const movieRating = movieRatingData.results.find((rating: any) => rating.iso_3166_1 === "US").release_dates[0].certification
 
     return (
       <div>
@@ -29,6 +37,7 @@ export default async function Movie({params } : { params: {id: number}}) {
                 {movieData.title} ({movieData.release_date.substring(0, 4)})
               </h2>
               <div className="flex flex-row">
+                { movieRating ? <h3 className="text-white font-semibold">{movieRating} &bull;&nbsp;</h3> : null}
                 <h3 className="text-white">{movieData.release_date.substring(5,7)}/{movieData.release_date.substring(8,10)}/{movieData.release_date.substring(0,4)} &bull;&nbsp;</h3>
                 <h3 className="text-white">{Math.floor(movieData.runtime/60)}h {movieData.runtime%60}m &bull;&nbsp;</h3>
                 <ul className="flex space-x-2 text-white text-md">
