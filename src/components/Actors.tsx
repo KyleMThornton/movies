@@ -10,7 +10,7 @@ export default async function Actors(movieId:any) {
     const actorData = await getActorData(movieId.movieId)
 
     return (
-        <div className="h-128">
+        <div className="h-112">
             <h1 className="text-3xl font-bold py-5">Actors</h1>
             <div className="flex overflow-auto w-full custom-scrollbar">
                 {actorData.cast.map((actor: any) => (
