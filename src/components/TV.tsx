@@ -1,4 +1,4 @@
-import { MovieCard } from "./MovieCard"
+import { TVCard } from "./TVCard"
 
 export default async function TV() {
     const response = await fetch(`https://api.themoviedb.org/3/discover/tv?api_key=${process.env.TMDB_API_KEY}`)
@@ -9,7 +9,7 @@ export default async function TV() {
             <h2 className="text-4xl font-bold pl-2 py-2">TV</h2>
             <div className="flex overflow-auto w-full custom-scrollbar">
                 {tvData.results.map((tv: any) => (
-                    <MovieCard
+                    <TVCard
                         id={tv.id}
                         key={tv.id}
                         poster={tv.poster_path}
