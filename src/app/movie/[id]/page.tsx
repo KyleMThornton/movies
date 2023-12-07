@@ -1,7 +1,6 @@
 import Actors from "@/components/Actors";
 import Rating from "@/components/Rating";
-import Recommendations from "@/components/Recommendations";
-import { Dirent } from "fs";
+import MovieRecommendations from "@/components/MovieRecommendations";
 import { FaPlay } from "react-icons/fa";
 
 async function getMovieData(movieId: number) {
@@ -39,14 +38,20 @@ export default async function Movie({params } : { params: {id: number}}) {
         if (usRating && usRating.release_dates && usRating.release_dates[0]) {
             movieRating = usRating.release_dates[0].certification;
         }
-    }    const movieCredits = await getMovieCredits(params.id)
-    const director = movieCredits.crew.find((crewMember: any) => crewMember.job === "Director").name
-    const screenwriters = movieCredits.crew.filter((crewMember: any) => crewMember.job === "Screenplay").map((crewMember: any) => crewMember.name)
+    }    
+    const movieCredits = await getMovieCredits(params.id)
+    let director = "";
+    try {
+      director = movieCredits.crew.find((crewMember: any) => crewMember.job === "Director").name
+    } catch (error) {
+      null
+    }
+    const screenwriters = movieCredits.crew.filter((crewMember: any) => crewMember.job === "Screenplay" || crewMember.job === "Writer").map((crewMember: any) => crewMember.name)
     let trailer;
     try {
         trailer = await getMovieTrailer(params.id);
     } catch (error) {
-        console.error('Failed to fetch movie trailer:', error);
+        null
     }
 
     return (
@@ -60,10 +65,16 @@ export default async function Movie({params } : { params: {id: number}}) {
         ></div>
         <div className="container relative h-128 text-white">
           <div className="flex items-center h-full">
+            { movieData.poster_path ?
             <img
               src={`https://image.tmdb.org/t/p/original/${movieData.poster_path}`}
               className="h-96 rounded-xl"
+            /> :
+            <img
+              src={`/images/noposter.jpg`}
+              className="h-96 rounded-xl"
             />
+            }
             <div className="pl-5">
               <div className="flex justify-between">
                 <div>
@@ -101,22 +112,22 @@ export default async function Movie({params } : { params: {id: number}}) {
                 <p className="text-lg">{movieData.overview}</p>
               </div>
               <div className="flex justify-between w-1/2">
-                {director ? <div>
+                {director !== "" ? <div>
                   <h5 className="pt-5 font-bold">Director</h5>
                   <p>{director}</p>
                 </div> : null }
-                {screenwriters ? <div>
+                <div>
                   <h5 className="pt-5 font-bold">Screenplay</h5>
                   <p>{screenwriters.join(", ")}</p>
-                </div> : null}
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="container pb-5">
+      <div className="container">
         <Actors movieId={params.id} />
-        <Recommendations movieId={params.id} />
+        <MovieRecommendations movieId={params.id} />
       </div>
       </div>
     );
