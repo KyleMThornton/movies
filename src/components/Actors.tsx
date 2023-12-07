@@ -7,7 +7,7 @@ async function getActorData(movieId: number) {
 }
 
 export default async function Actors(movieId:any) {
-    const actorData = await getActorData(507089)
+    const actorData = await getActorData(movieId.movieId)
 
     return (
         <div className="h-128">
