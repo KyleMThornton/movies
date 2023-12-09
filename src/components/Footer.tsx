@@ -1,3 +1,6 @@
+//TODO: Add links to Github, KT.dev, and TMDB
+//TODO: Update Icons
+
 export default function Footer() {
   return (
     <div className="bg-neutral">
