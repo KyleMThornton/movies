@@ -1,5 +1,5 @@
 import Rating from "./Rating";
-import Link from 'next/link'
+import Link from 'next/link';
 
 type MovieCardProps = {
     poster: string;

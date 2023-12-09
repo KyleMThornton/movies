@@ -1,4 +1,4 @@
-import { TVCard } from "./TVCard"
+import { TVCard } from "./TVCard";
 
 export default async function TV() {
     const response = await fetch(`https://api.themoviedb.org/3/discover/tv?api_key=${process.env.TMDB_API_KEY}`)

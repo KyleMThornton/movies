@@ -1,4 +1,4 @@
-import { MovieCard } from "./MovieCard"
+import { MovieCard } from "./MovieCard";
 
 async function getTVRecommendations(TVId: number) {
     const response = await fetch(`https://api.themoviedb.org/3/TV/${TVId}/recommendations?api_key=${process.env.TMDB_API_KEY}`)
