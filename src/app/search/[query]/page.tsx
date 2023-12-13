@@ -26,7 +26,7 @@ export default async function Search({params } : { params: {query: string}}) {
     let data;
     params.query === "movie" ? data = getMovieData() : params.query === "tv" ? data = getTVData() : params.query === "person" ? data = getPersonData() : data = getSearchResults(params.query)
     return (
-        <div>
+        <div className="container">
             {params.query === "movie" ? <h1 className="text-4xl font-bold ">Popular Movies</h1> : params.query === "tv" ? <h1 className="text-4xl font-bold ">Popular TV Shows</h1> : params.query === "person" ? <h1 className="text-4xl font-bold ">Popular People</h1> : <h1 className="text-4xl font-bold ">Search Results for "{params.query}"</h1>}
         </div>
     )
