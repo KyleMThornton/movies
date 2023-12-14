@@ -1,7 +1,7 @@
 import { MovieCard } from "./MovieCard";
 
 export default async function Movies() {
-    const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.TMDB_API_KEY}`)
+    const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.TMDB_API_KEY}`, { next: { revalidate: 3600 } })
     const movieData = await response.json()
 
     return (

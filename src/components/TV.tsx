@@ -1,7 +1,7 @@
 import { TVCard } from "./TVCard";
 
 export default async function TV() {
-    const response = await fetch(`https://api.themoviedb.org/3/discover/tv?api_key=${process.env.TMDB_API_KEY}`)
+    const response = await fetch(`https://api.themoviedb.org/3/discover/tv?api_key=${process.env.TMDB_API_KEY}`, { next: { revalidate: 3600 } })
     const tvData = await response.json()
 
     return (
