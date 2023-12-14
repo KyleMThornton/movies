@@ -1,7 +1,7 @@
 import { MovieCard } from "./MovieCard";
 
 async function getMovieRecommendations(movieId: number) {
-    const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=${process.env.TMDB_API_KEY}`)
+    const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=${process.env.TMDB_API_KEY}`, { next: { revalidate: 3600 }})
     const movieRecs = await response.json()
     return movieRecs
 }
