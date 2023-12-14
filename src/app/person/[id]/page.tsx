@@ -82,7 +82,7 @@ export default async function Person({params } : { params: {id: number}}) {
             </div>
         </div>
         <div className="container text-black dark:text-white pt-5">
-            <h2 className="text-4xl font-bold p-2">Known For</h2>
+            <h2 className="text-4xl font-bold p-2">Movie Credits</h2>
             <div className="flex overflow-auto w-full custom-scrollbar">
                 {personMovieCredits.cast.map((movie: any) => (
                     <MovieCard
@@ -95,6 +95,7 @@ export default async function Person({params } : { params: {id: number}}) {
                     />
                 ))}
             </div>
+            <h2 className="text-4xl font-bold p-2 pt-5">TV Credits</h2>
             <div className="flex overflow-auto w-full custom-scrollbar">
                 {personTVCredits.cast.map((tv: any) => (
                     <TVCard
