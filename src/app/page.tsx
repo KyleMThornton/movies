@@ -1,3 +1,4 @@
+import Actors from "@/components/Actors";
 import Hero from "@/components/Hero";
 import Movies from "@/components/Movies";
 import TV from "@/components/TV";
@@ -8,6 +9,7 @@ export default function Home() {
       <Hero />
       <Movies />
       <TV />
+      <Actors />
     </main>
   )
 }
