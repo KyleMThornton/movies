@@ -5,7 +5,7 @@ export default async function TV() {
     const tvData = await response.json()
 
     return (
-        <div className="container text-black dark:text-white pb-5">
+        <div className="container text-black dark:text-white pb-4">
             <h2 className="text-4xl font-bold pl-2 py-2">TV</h2>
             <div className="flex overflow-auto w-full custom-scrollbar">
                 {tvData.results.map((tv: any) => (

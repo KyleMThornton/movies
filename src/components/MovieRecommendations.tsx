@@ -12,7 +12,7 @@ export default async function MovieRecommendations(movieId: any) {
     return (
         <> {movieRecs.results.length !== 0 ?
             <div className="container text-black dark:text-white pb-5">
-                <h2 className="text-4xl font-bold p-2">Recommendations</h2>
+                <h2 className="text-4xl font-bold pt-2">Recommendations</h2>
                 <div className="flex overflow-auto w-full custom-scrollbar">
                     {movieRecs.results.map((movie: any) => (
                         <MovieCard
