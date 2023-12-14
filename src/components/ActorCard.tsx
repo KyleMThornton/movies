@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 type ActorCardProps = {
     name: string;
-    character: string;
+    character?: string;
     profile_path: string;
     id: number;
 };
@@ -17,9 +17,9 @@ export const ActorCard: React.FC<ActorCardProps> = ({name, character, profile_pa
                 <div className="flex flex-col">
                     <h3 className="pt-2 pl-2 font-bold text-md">{name}</h3>
                     <div className="flex items-center justify-between pl-2">
-                        <div className="flex flex-col">
+                        {character ? <div className="flex flex-col">
                             <p>{character}</p>
-                        </div>
+                        </div> : null}
                     </div>
                 </div>
             </div>
