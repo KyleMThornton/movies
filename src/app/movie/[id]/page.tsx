@@ -1,4 +1,4 @@
-import Actors from "@/components/Actors";
+import Cast from "@/components/Cast";
 import Rating from "@/components/Rating";
 import MovieRecommendations from "@/components/MovieRecommendations";
 import { FaPlay } from "react-icons/fa";
@@ -126,7 +126,7 @@ export default async function Movie({params } : { params: {id: number}}) {
         </div>
       </div>
       <div className="container">
-        <Actors movieId={params.id} />
+        <Cast movieId={params.id} />
         <MovieRecommendations movieId={params.id} />
       </div>
       </div>
