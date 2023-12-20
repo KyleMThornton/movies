@@ -27,12 +27,6 @@ export default async function Person({params } : { params: {id: number}}) {
     return (
         <div>
         <div className="relative bg-slate-950 h-128">
-            <div
-                className="absolute inset-0 bg-cover bg-center h-128 opacity-20"
-                style={{
-                    backgroundImage: `url(https://image.tmdb.org/t/p/w1280${personData.profile_path})`,
-                }}
-            />
             <div className="absolute inset-0 bg-gradient-to-r from-slate-950 to-transparent" />
             <div className="absolute inset-0 flex items-center justify-center">
                 <div className="container text-white">
@@ -44,38 +38,23 @@ export default async function Person({params } : { params: {id: number}}) {
                                 className="rounded-lg shadow-lg w-48 md:w-64"
                             />
                         </div>
-                        <div className="flex-auto md:ml-10">
+                        <div className="flex-auto ml-10">
                             <h2 className="text-4xl font-bold">{personData.name}</h2>
-                            <div className="flex flex-wrap items-center text-sm text-gray-400">
-                                <svg
-                                    className="w-4 h-4 fill-current text-yellow-500"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path d="M12 17.27l5.74 3.28-1.1-6.42L22 9.24l-6.38-.92L12 2 9.38 8.32 3 9.24l4.36 4.89L5.26 20z" />
-                                </svg>
-                                <span className="ml-1">{personData.birthday}</span>
-                                <span className="mx-2">•</span>
-                                <span>{personData.place_of_birth}</span>
+                            <div className="flex flex-wrap items-center text-gray-400 mt-4">
+                                <h3 className="font-semibold">Date of birth:&nbsp;</h3>
+                                <h3 className="font-light">{personData.birthday}</h3>
+                                <span className="font-semibold">&nbsp;&bull;&nbsp;</span>
+                                <h3 className="font-semibold">Place of birth:&nbsp;</h3>
+                                <h3 className="font-light">{personData.place_of_birth}</h3>
                             </div>
                             <div className="flex flex-wrap items-center text-sm text-gray-400">
-                                <svg
-                                    className="w-4 h-4 fill-current text-yellow-500"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path d="M12 17.27l5.74 3.28-1.1-6.42L22 9.24l-6.38-.92L12 2 9.38 8.32 3 9.24l4.36 4.89L5.26 20z" />
-                                </svg>
-                                <span className="ml-1">{personData.deathday}</span>
+                                <span className="">{personData.deathday}</span>
                             </div>
-                            <p className="mt-2">{personData.biography}</p>
-                            <div className="flex flex-wrap items-center mt-4 text-sm text-gray-400">
-                                <svg
-                                    className="w-4 h-4 fill-current text-yellow-500"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path d="M12 17.27l5.74 3.28-1.1-6.42L22 9.24l-6.38-.92L12 2 9.38 8.32 3 9.24l4.36 4.89L5.26 20z" />
-                                </svg>
-                                <span className="ml-1">{personData.known_for_department}</span>
+                            <div className="flex flex-wrap items-center text-gray-400">
+                                <span className="font-semibold">Known For:&nbsp;</span>
+                                <span className="font-light">{personData.known_for_department}</span>
                             </div>
+                            <p className="mt-4">{personData.biography}</p>
                         </div>
                     </div>
                 </div>
@@ -102,8 +81,8 @@ export default async function Person({params } : { params: {id: number}}) {
                         key={tv.id}
                         id={tv.id}
                         poster={tv.poster_path}
-                        title={tv.title}
-                        releaseDate="n/a"
+                        title={tv.name}
+                        releaseDate={tv.first_air_date}
                         voteAverage={tv.vote_average}
                     />
                 ))}
