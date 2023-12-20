@@ -1,8 +1,18 @@
+"use client";
+
 import Link from 'next/link';
 import { FaHome } from "react-icons/fa";
+import { useState, useRef } from "react";
 
 
 export default function NavBar() {
+    const [searchbar, setSearchbar] = useState('');
+    const searchbarRef = useRef();
+
+    const handleInputUpdate = () => {
+        setSearchbar(searchbarRef.current.value);
+    }
+
     return (
         <div className='bg-slate-800'>
             <nav className='container flex flex-col md:flex-row justify-between p-8 items-center'>
@@ -14,8 +24,8 @@ export default function NavBar() {
                     <li className='px-2 text-xl hover:font-bold'>Dark/Light</li>
                 </ul>
                 <div className='flex join'>
-                    <input type="text" className='input input-bordered join-item wd-1/3 md:w-80' />
-                    <button className='btn join-item'>Search</button>
+                    <input type="text" ref={searchbarRef} onChange={handleInputUpdate} className='input input-bordered join-item wd-1/3 md:w-80' />
+                    <Link href={`/search/${searchbar}`}><button className='btn join-item'>Search</button></Link>
                 </div>
             </nav>
         </div>
