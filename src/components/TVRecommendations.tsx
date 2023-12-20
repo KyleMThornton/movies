@@ -1,4 +1,4 @@
-import { MovieCard } from "./MovieCard";
+import { TVCard } from "./TVCard";
 
 async function getTVRecommendations(TVId: number) {
     const response = await fetch(`https://api.themoviedb.org/3/TV/${TVId}/recommendations?api_key=${process.env.TMDB_API_KEY}`, { next: { revalidate: 3600 }})
@@ -15,12 +15,12 @@ export default async function TVRecommendations(TVId: any) {
                 <h2 className="text-4xl font-bold p-2">Recommendations</h2>
                 <div className="flex overflow-auto w-full custom-scrollbar">
                     {TVRecs.results.map((TV: any) => (
-                        <MovieCard
+                        <TVCard
                             key={TV.id}
                             id={TV.id}
                             poster={TV.poster_path}
-                            title={TV.title}
-                            releaseDate={TV.release_date}
+                            title={TV.name}
+                            releaseDate={TV.first_air_date}
                             voteAverage={TV.vote_average}
                         />
                     )
