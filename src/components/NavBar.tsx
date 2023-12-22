@@ -6,11 +6,11 @@ import { useRouter } from 'next/navigation';
 
 export default function NavBar() {
     const [searchbar, setSearchbar] = useState('');
-    const searchbarRef = useRef();
-    const router = useRouter()
+    const searchbarRef = useRef<HTMLInputElement | null>(null);
+    const router = useRouter();
 
     const handleInputUpdate = () => {
-        setSearchbar(searchbarRef.current.value);
+        setSearchbar(searchbarRef.current?.value || '');
     }
 
     const handleSubmit = (e: { preventDefault: () => void; }) => {
