@@ -1,6 +1,6 @@
-import TVActors from "@/components/TVActors";
+import TVCast from "@/components/TVCast";
 import Rating from "@/components/Rating";
-import Recommendations from "@/components/TVRecommendations";
+import TVRecommendations from "@/components/TVRecommendations";
 import { FaPlay } from "react-icons/fa";
 
 async function getTVData(TVId: number) {
@@ -78,17 +78,24 @@ export default async function TV({params } : { params: {id: number}}) {
               <div className="flex justify-between">
                 <div>
                   <h2 className="text-4xl font-bold">
-                    {TVData.title}
+                    {TVData.name}
                   </h2>
                   <div className="flex flex-row">
                     { TVRating ? <h3 className="font-semibold">{TVRating} &bull;&nbsp;</h3> : null}
-                    <h3 className="">{Math.floor(TVData.runtime/60)}h {TVData.runtime%60}m &bull;&nbsp;</h3>
-                    <ul className="flex space-x-2 text-white text-md">
-                      {TVData.genres.map((genre: any) => (
-                        <li key={genre.id}>{genre.name}</li>
+                    <ul className="flex space-x-1 text-white text-md py-2">
+                    {TVData.genres.map((genre: any, index: number, array: any[]) => (
+                      <li key={genre.id} className="font-extralight">
+                        {genre.name}{index < array.length - 1 ? ' /' : ''}
+                      </li>
                       ))}
                     </ul>
                   </div>
+                  <div className="text-md">
+                      <h2>First air date: {TVData.first_air_date.substring(5,7)}/{TVData.first_air_date.substring(8,10)}/{TVData.first_air_date.substring(0,4)}</h2>
+                      <h2>Seasons: {TVData.number_of_seasons}</h2>
+                      <h2>Episodes: {TVData.number_of_episodes}</h2>
+                      <h2>Status: {TVData.status}</h2>
+                    </div>
                   <h3 className="text-lg italic font-light pt-5">
                     {TVData.tagline}
                   </h3>
@@ -120,8 +127,8 @@ export default async function TV({params } : { params: {id: number}}) {
         </div>
       </div>
       <div className="container">
-        {/* <TVActors TVId={params.id} /> */}
-        {/* <Recommendations TVId={params.id} /> */}
+        <TVCast TVId={params.id} />
+        <TVRecommendations TVId={params.id} />
       </div>
       </div>
     );
