@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState, useRef } from "react";
-
+import { redirect } from 'next/navigation'
 
 export default function NavBar() {
     const [searchbar, setSearchbar] = useState('');
@@ -10,6 +10,10 @@ export default function NavBar() {
 
     const handleInputUpdate = () => {
         setSearchbar(searchbarRef.current.value);
+    }
+
+    const handleSubmit = (e) => {
+        redirect(`/search/${searchbar}`)
     }
 
     return (
@@ -22,10 +26,12 @@ export default function NavBar() {
                     <Link href="/search/person"><li className='px-2 text-xl hover:font-bold'>People</li></Link>
                     {/* <li className='px-2 text-xl hover:font-bold'>Dark/Light</li> */}
                 </ul>
-                <div className='flex join'>
-                    <input type="text" ref={searchbarRef} onChange={handleInputUpdate} className='input input-bordered join-item wd-1/3 md:w-80' />
-                    <Link href={`/search/${searchbar}`}><button className='btn join-item'>Search</button></Link>
-                </div>
+                <form onSubmit={handleSubmit}>
+                    <div className='flex join'>
+                        <input type="text" ref={searchbarRef} onChange={handleInputUpdate} className='input input-bordered join-item wd-1/3 md:w-80' />
+                        <Link href={`/search/${searchbar}`}><button type="submit" className='btn join-item'>Search</button></Link>
+                    </div>
+                </form>
             </nav>
         </div>
     )
