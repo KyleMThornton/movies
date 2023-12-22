@@ -2,18 +2,20 @@
 
 import Link from 'next/link';
 import { useState, useRef } from "react";
-import { redirect } from 'next/navigation'
+import { useRouter } from 'next/navigation';
 
 export default function NavBar() {
     const [searchbar, setSearchbar] = useState('');
     const searchbarRef = useRef();
+    const router = useRouter()
 
     const handleInputUpdate = () => {
         setSearchbar(searchbarRef.current.value);
     }
 
-    const handleSubmit = (e) => {
-        redirect(`/search/${searchbar}`)
+    const handleSubmit = (e: { preventDefault: () => void; }) => {
+        e.preventDefault();
+        if(searchbar !== '') router.push(`/search/${searchbar}`)
     }
 
     return (
@@ -29,7 +31,7 @@ export default function NavBar() {
                 <form onSubmit={handleSubmit}>
                     <div className='flex join'>
                         <input type="text" ref={searchbarRef} onChange={handleInputUpdate} className='input input-bordered join-item wd-1/3 md:w-80' />
-                        <Link href={`/search/${searchbar}`}><button type="submit" className='btn join-item'>Search</button></Link>
+                        <button type="submit" className='btn join-item'>Search</button>
                     </div>
                 </form>
             </nav>
