@@ -75,7 +75,7 @@ export default async function Person({params } : { params: {id: number}}) {
                 ))}
             </div>
             <h2 className="text-4xl font-bold p-2 pt-5">TV Credits</h2>
-            <div className="flex overflow-auto w-full custom-scrollbar">
+            <div className="flex overflow-auto w-full custom-scrollbar mb-5">
                 {personTVCredits.cast.map((tv: any) => (
                     <TVCard
                         key={tv.id}
