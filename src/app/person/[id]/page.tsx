@@ -26,7 +26,7 @@ export default async function Person({params } : { params: {id: number}}) {
 
     return (
         <div>
-        <div className="relative bg-slate-950 h-128">
+        <div className="relative bg-slate-950 h-160">
             <div className="absolute inset-0 bg-gradient-to-r from-slate-950 to-transparent" />
             <div className="absolute inset-0 flex items-center justify-center">
                 <div className="container text-white">
