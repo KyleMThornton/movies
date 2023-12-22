@@ -83,7 +83,7 @@ export default async function Movie({params } : { params: {id: number}}) {
                   </h2>
                   <div className="flex flex-row">
                     { movieRating ? <h3 className="font-semibold">{movieRating} &bull;&nbsp;</h3> : null}
-                    { movieData.relase_date ? <h3 className="">{movieData.release_date.substring(5,7)}/{movieData.release_date.substring(8,10)}/{movieData.release_date.substring(0,4)} &bull;&nbsp;</h3> : null}
+                    <h3 className="">{movieData.release_date.substring(5,7)}/{movieData.release_date.substring(8,10)}/{movieData.release_date.substring(0,4)} &bull;&nbsp;</h3>
                     { movieData.runtime ? <h3 className="">{Math.floor(movieData.runtime/60)}h {movieData.runtime%60}m &bull;&nbsp;</h3> : null }
                     <ul className="flex space-x-2 text-white text-md">
                       {movieData.genres.map((genre: any) => (
