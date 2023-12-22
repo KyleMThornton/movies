@@ -58,7 +58,7 @@ export default async function Search({
         <h1 className="text-4xl font-bold ">Popular People</h1>
       ) : (
         <h1 className="text-4xl font-bold ">
-          Search Results for $quot;{decodeURI(params.query)}$quot;
+            Search Results for &quot;{decodeURI(params.query)}&quot;
         </h1>
       )}
       </div>
