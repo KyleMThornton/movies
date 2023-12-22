@@ -12,7 +12,7 @@ export default function Rating({ review }: { review: number }) {
 
     return (
         <>
-            <div className={`radial-progress ${ratingColor}`} style={{"--value":ratingPercentage, "--size": "2.5rem"}}>{ratingPercentage}</div>
+            <div className={`radial-progress ${ratingColor}`} style={{ "--value": ratingPercentage, "--size": "2.5rem" } as React.CSSProperties}>{ratingPercentage}</div>
         </>
     )
 }
