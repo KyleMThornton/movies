@@ -5,7 +5,7 @@ type ActorCardProps = {
     character?: string;
     profile_path: string;
     id: number;
-    known_for?: Array<string>;
+    known_for?: Array<{ title: string }>;
 };
 
 export const ActorCard: React.FC<ActorCardProps> = ({name, character, profile_path, id, known_for}) => {
