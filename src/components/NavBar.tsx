@@ -19,8 +19,8 @@ export default function NavBar() {
     }
 
     return (
-        <div className='bg-slate-800'>
-            <nav className='container flex flex-col md:flex-row justify-between p-8 items-center'>
+        <div className='bg-slate-800 sticky top-0 z-10'>
+            <nav className='container flex flex-col md:flex-row justify-between p-4 items-center'>
                 <ul className='flex cursor-pointer pb-5 md:pb-0 text-slate-50 items-center'>
                     <Link href="/"><li className='px-2 text-xl hover:font-bold'>Home</li></Link>
                     <Link href="/search/movie"><li className='px-2 text-xl hover:font-bold'>Movies</li></Link>
