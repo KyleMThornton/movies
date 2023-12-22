@@ -79,12 +79,12 @@ export default async function Movie({params } : { params: {id: number}}) {
               <div className="flex justify-between">
                 <div>
                   <h2 className="text-4xl font-bold">
-                    {movieData.title} ({movieData.release_date.substring(0, 4)})
+                    {movieData.title} {movieData.release_date ? `(${movieData.release_date.substring(0, 4)})` : null}
                   </h2>
                   <div className="flex flex-row">
                     { movieRating ? <h3 className="font-semibold">{movieRating} &bull;&nbsp;</h3> : null}
-                    <h3 className="">{movieData.release_date.substring(5,7)}/{movieData.release_date.substring(8,10)}/{movieData.release_date.substring(0,4)} &bull;&nbsp;</h3>
-                    <h3 className="">{Math.floor(movieData.runtime/60)}h {movieData.runtime%60}m &bull;&nbsp;</h3>
+                    { movieData.relase_date ? <h3 className="">{movieData.release_date.substring(5,7)}/{movieData.release_date.substring(8,10)}/{movieData.release_date.substring(0,4)} &bull;&nbsp;</h3> : null}
+                    { movieData.runtime ? <h3 className="">{Math.floor(movieData.runtime/60)}h {movieData.runtime%60}m &bull;&nbsp;</h3> : null }
                     <ul className="flex space-x-2 text-white text-md">
                       {movieData.genres.map((genre: any) => (
                         <li key={genre.id}>{genre.name}</li>
