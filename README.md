@@ -1,4 +1,4 @@
-## Untitled MovieDB App
+## The Entertainment Database
 
 Created with Next.JS and Tailwind CSS.
 
