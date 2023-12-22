@@ -1,7 +1,7 @@
 import { TVCard } from "./TVCard";
 
 async function getTVRecommendations(TVId: number) {
-    const response = await fetch(`https://api.themoviedb.org/3/TV/${TVId}/recommendations?api_key=${process.env.TMDB_API_KEY}`, { next: { revalidate: 3600 }})
+    const response = await fetch(`https://api.themoviedb.org/3/tv/${TVId}/recommendations?api_key=${process.env.TMDB_API_KEY}`, { next: { revalidate: 3600 }})
     const TVRecs = await response.json()
     return TVRecs
 }
@@ -12,7 +12,7 @@ export default async function TVRecommendations(TVId: any) {
     return (
         <> {TVRecs.results.length !== 0 ?
             <div className="container text-black dark:text-white pb-5">
-                <h2 className="text-4xl font-bold p-2">Recommendations</h2>
+                <h2 className="text-4xl font-bold p-2">Recommended TV Shows</h2>
                 <div className="flex overflow-auto w-full custom-scrollbar">
                     {TVRecs.results.map((TV: any) => (
                         <TVCard
