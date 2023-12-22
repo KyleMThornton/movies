@@ -1,5 +1,3 @@
-//TODO: Add links to Github, KT.dev, and TMDB
-//TODO: Update Icons
 import { TbMovie } from "react-icons/tb";
 import { CiGlobe } from "react-icons/ci";
 import { FaGithub } from "react-icons/fa";
