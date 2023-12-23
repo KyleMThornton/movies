@@ -7,7 +7,7 @@ import Footer from '@/components/Footer'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Untitled MovieDB App',
+  title: 'Entertainment Database',
   description: 'Powered by Next.js, Tailwind CSS, and The Movie Database API.',
 }
 
