@@ -2,6 +2,7 @@ import Cast from "@/components/Cast";
 import Rating from "@/components/Rating";
 import MovieRecommendations from "@/components/MovieRecommendations";
 import { FaPlay } from "react-icons/fa";
+import Trailer from "@/components/Trailer";
 
 async function getMovieData(movieId: number) {
     const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.TMDB_API_KEY}`)
@@ -104,6 +105,7 @@ export default async function Movie({params } : { params: {id: number}}) {
                       </div>
                       <h3 className="text-xl pl-2">Play Trailer</h3>
                     </div></a> : null}
+                    <Trailer />
                   </div>
                 </div>
               </div>
