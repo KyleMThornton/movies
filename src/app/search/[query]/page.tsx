@@ -48,7 +48,7 @@ export default async function Search({
     ? (data = getPersonData())
     : (data = getSearchResults(params.query));
   return (
-    <div className="container my-5">
+    <div className="container my-5 dark:text-white">
     <div className="mb-5">
       {params.query === "movie" ? (
         <h1 className="text-4xl font-bold ">Popular Movies</h1>
