@@ -11,7 +11,7 @@ export default async function TVCast(TVId:any) {
 
     return (
         <> {actorData.cast.length !== 0 ?
-            <div className="h-auto mb-5">
+            <div className="h-auto mb-5 text-black dark:text-white">
                 <h1 className="text-3xl font-bold pt-5">Cast</h1>
                 <div className="flex overflow-auto w-full custom-scrollbar">
                     {actorData.cast.map((actor: any) => (
