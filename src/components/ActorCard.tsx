@@ -11,7 +11,7 @@ type ActorCardProps = {
 export const ActorCard: React.FC<ActorCardProps> = ({name, character, profile_path, id, known_for}) => {
     const headshot = profile_path ? `https://image.tmdb.org/t/p/original/${profile_path}` : "/images/noheadshot.jpg"
     return (
-      <div className="flex flex-col m-2 h-auto text-black border rounded-xl pb-2">
+      <div className="flex flex-col m-2 h-auto rounded-xl pb-2 bg-white dark:bg-slate-700 shadow-lg">
         <div className="h-60 w-48 hover:scale-105 transition-all duration-200 ease-in-out cursor-pointer">
           <Link href={`/person/${id}`}>
             <img
