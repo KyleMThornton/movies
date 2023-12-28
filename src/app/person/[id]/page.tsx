@@ -69,7 +69,7 @@ export default async function Person({ params }: { params: { id: number } }) {
         </div>
       </div>
       <div className="container text-black dark:text-white pt-5">
-        <h2 className="text-4xl font-bold p-2">Movie Credits</h2>
+        {personMovieCredits.cast.length !== 0 ? <h2 className="text-4xl font-bold p-2">Movie Credits</h2> : null}
         <div className="flex overflow-auto w-full custom-scrollbar">
           {personMovieCredits.cast
             .sort((a: any, b: any) => {
@@ -88,7 +88,7 @@ export default async function Person({ params }: { params: { id: number } }) {
               />
             ))}
         </div>
-        <h2 className="text-4xl font-bold p-2 pt-5">TV Credits</h2>
+        {personTVCredits.cast.length !== 0 ? <h2 className="text-4xl font-bold p-2 pt-5">TV Credits</h2> : null}
         <div className="flex overflow-auto w-full custom-scrollbar mb-5">
           {personTVCredits.cast
             .sort((a: any, b: any) => {
