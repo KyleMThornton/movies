@@ -48,7 +48,7 @@ export default async function Search({
     ? (data = getPersonData())
     : (data = getSearchResults(params.query));
   return (
-    <div className="container my-5 dark:text-white">
+    <div className="container my-5 dark:text-white flex flex-col items-center text-center md:items-start">
     <div className="mb-5">
       {params.query === "movie" ? (
         <h1 className="text-4xl font-bold ">Popular Movies</h1>
@@ -63,7 +63,7 @@ export default async function Search({
       )}
       </div>
       {params.query === "movie" ? (
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap flex-col md:flex-row">
           {await data.then((movieData: any) =>
             movieData.results.map((movie: any) => (
               <MovieCard
@@ -78,7 +78,7 @@ export default async function Search({
           )}
         </div>
       ) : params.query === "tv" ? (
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap flex-col md:flex-row">
           {await data.then((tvData: any) =>
             tvData.results.map((tv: any) => (
               <TVCard
@@ -93,7 +93,7 @@ export default async function Search({
           )}
         </div>
       ) : params.query === "person" ? (
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap flex-col md:flex-row">
           {await data.then((personData: any) =>
             personData.results.map((person: any) => (
               <ActorCard
@@ -107,7 +107,7 @@ export default async function Search({
           )}
         </div>
       ) : (
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap flex-col md:flex-row">
           {await data.then((searchData: any) =>
             searchData.results.map((result: any) =>
               result.media_type === "movie" ? (
