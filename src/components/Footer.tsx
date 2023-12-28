@@ -19,13 +19,13 @@ export default function Footer() {
         <nav>
           <header className="footer-title">Links</header>
           <div className="grid grid-flow-col gap-4 text-2xl">
-            <a href="https://www.kylethornton.dev/" className="hover:text-blue-300">
+            <a href="https://www.kylethornton.dev/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-300">
               <CiGlobe />
             </a>
-            <a href="https://github.com/KyleMThornton" className="hover:text-blue-300">
+            <a href="https://github.com/KyleMThornton" target="_blank" rel="noopener noreferrer" className="hover:text-blue-300">
               <FaGithub />
             </a>
-            <a href="https://www.themoviedb.org/" className="hover:text-blue-300">
+            <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-300">
               <RiMovie2Line />
             </a>
           </div>
