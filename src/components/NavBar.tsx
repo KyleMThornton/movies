@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useState, useRef } from "react";
 import { useRouter } from 'next/navigation';
+import { ThemeSwitcher } from './ThemeSwitcher';
 
 export default function NavBar() {
     const [searchbar, setSearchbar] = useState('');
@@ -27,6 +28,7 @@ export default function NavBar() {
                     <Link href="/search/tv"><li className='px-2 text-xl hover:font-bold'>TV</li></Link>
                     <Link href="/search/person"><li className='px-2 text-xl hover:font-bold'>People</li></Link>
                     {/* <li className='px-2 text-xl hover:font-bold'>Dark/Light</li> */}
+                    <ThemeSwitcher />
                 </ul>
                 <form onSubmit={handleSubmit}>
                     <div className='flex join'>
