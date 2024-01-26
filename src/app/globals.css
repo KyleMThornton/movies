@@ -39,3 +39,26 @@
     }
   }
 }
+
+.animated-underline {
+  position: relative;
+  text-decoration: none;
+  color: #fff;
+}
+
+.animated-underline::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  transition: width .3s;
+}
+
+.animated-underline:hover::after {
+  width: 80%;
+  left: 10%;
+  right: 10%;
+}
